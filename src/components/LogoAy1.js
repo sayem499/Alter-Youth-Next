@@ -36,7 +36,7 @@ function SvgAlteryouthLogo(props) {
           transform="translate(10.489 7)"
           fill={props.color || "#fff"}
           fontSize={6.5}
-          fontFamily="Gilroy"
+          fontFamily="'Poppins', sans-serif" 
           fontWeight={700}
           letterSpacing="-.04em"
         >
