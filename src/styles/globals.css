@@ -19,3 +19,48 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif; */
 }
+
+.phone-input-container:focus-within .phone-input {
+  border-color: #1dc468; 
+  outline: none;
+}
+
+.phone-input-container:focus-within .phone-button {
+  border-color: #1dc468;
+}
+
+.warning-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+      top: -50px;
+      opacity: 0;
+  }
+  100% {
+      top: 20px;
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}

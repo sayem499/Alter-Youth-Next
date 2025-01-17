@@ -1,13 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css';
+import 'flag-icon-css/css/flag-icons.min.css';
 
 const JoinAlterYouthRevolution = () => {
+    const [scholarshipNumber, setScholarshipNumber] = useState(1);
+    const [scholarshipValue, setScholarshipValue] = useState(1650);
+    const [showAlert, setShowAlert] = useState(false); // State for alert visibility
+
+    const handleIncrease = () => {
+        if (scholarshipNumber < 3) {
+            const newNumber = scholarshipNumber + 1;
+            setScholarshipNumber(newNumber);
+            setScholarshipValue(newNumber * 1650);
+        } else {
+            setShowAlert(true); // Show alert if over 3
+            setTimeout(() => setShowAlert(false), 3000); // Hide alert after 3 seconds
+        }
+    };
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         phone: "",
-        country: "BD", // Default country (Bangladesh)
     });
 
     const handleInputChange = (e) => {
@@ -18,65 +34,83 @@ const JoinAlterYouthRevolution = () => {
         }));
     };
 
+    const handlePhoneChange = (phone) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            phone: phone, // This includes the country code
+        }));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Form data submitted:", formData);
-        // Add submission logic here
     };
 
     return (
-        <div className="ay-rounded w-[350px] bg-white p-3 shadow-lg">
+        <div className="w-[350px] bg-white p-3 shadow-lg rounded-lg">
             <form className="bg-white" onSubmit={handleSubmit}>
                 <h6 className="mb-3 text-[1.3rem]">
                     <strong>Join the</strong>
-                    <strong className="text-green"> #alteryouthrevolution</strong>
+                    <strong className="text-[#1dc468]"> #alteryouthrevolution</strong>
                 </h6>
-                <div className="mb-3 d-grid mb-xl-4" style={{ gap: "12px" }}>
+                <div className="mb-3" style={{ gap: "12px" }}>
                     <input
                         name="name"
-                        className="ay-input mb-1 h-[50px] border border-gray px-[1rem] w-full rounded-[12px]"
+                        className="mb-4 h-[50px] border border-gray-300 focus:border-[#1dc468] focus:outline-none px-[1rem] w-full rounded-[12px]"
                         placeholder="Your name"
                         value={formData.name}
                         onChange={handleInputChange}
                     />
                     <input
                         name="email"
-                        className="ay-input mb-1 h-[50px] border border-gray px-[1rem] w-full rounded-[12px]"
+                        className="mb-4 h-[50px] border border-gray-300 focus:border-[#1dc468] focus:outline-none px-[1rem] w-full rounded-[12px]"
                         placeholder="Your email"
                         autoCapitalize="none"
                         autoComplete="none"
                         value={formData.email}
                         onChange={handleInputChange}
                     />
-                    <div className="flex border px-[1rem] transition-colors duration-300 rounded-[12px] border-gray">
-                        <select
-                            name="country"
-                            className="PhoneInputCountrySelect"
-                            value={formData.country}
-                            onChange={handleInputChange}
-                        >
-                            <option value="BD">Bangladesh +880</option>
-                            <option value="US">United States +1</option>
-                            <option value="IN">India +91</option>
-                            <option value="UK">United Kingdom +44</option>
-                            {/* Add other countries as needed */}
-                        </select>
-                        <input
-                            name="phone"
-                            className="w-full border-none outline-none"
-                            placeholder="Your phone number"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                        />
-                    </div>
+                    <PhoneInput
+                        country={'bd'}
+                        value={formData.phone}
+                        onChange={handlePhoneChange}
+                        inputStyle={{
+                            width: '100%',
+                            height: '50px',
+                            borderRadius: '12px',
+                            paddingLeft: '3rem',
+                        }}
+                        buttonStyle={
+                            {
+                                height: '50px',
+                                borderTopLeftRadius: '12px',
+                                borderBottomLeftRadius: '12px',
+                                borderRight: 'none',
+                                background: '#ffff'
+                            }
+                        }
+                        containerClass="phone-input-container"
+                        inputClass="phone-input"
+                        buttonClass="phone-button"
+                        placeholder="Your Number"
+                        disableDropdown={false}
+                    />
                 </div>
                 <div>
                     <p className="mb-2">
                         <strong>Number of Scholarships</strong>
                     </p>
                     <div className="mb-4 flex justify-between">
-                        <div className="flex bg-gray-100 rounded-lg">
-                            <span className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgb(181, 181, 181)' }}>
+                        <div className="bg-gray-100 rounded-lg flex items-center justify-center">
+                            <span
+                                className="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer"
+                                style={{ backgroundColor: "rgb(181, 181, 181)" }}
+                                onClick={() => {
+                                    const newNumber = Math.max(1, scholarshipNumber - 1);
+                                    setScholarshipNumber(newNumber);
+                                    setScholarshipValue(newNumber * 1650);
+                                }}
+                            >
                                 <svg
                                     stroke="currentColor"
                                     fill="none"
@@ -93,12 +127,16 @@ const JoinAlterYouthRevolution = () => {
                                 </svg>
                             </span>
                             <input
-                                className="min-h-full min-w-[43px]"
+                                className="w-10 h-10 bg-transparent border-none outline-none text-center font-semibold text-sm pl-3"
                                 type="number"
                                 readOnly
-                                value="1"
+                                value={scholarshipNumber}
                             />
-                            <span className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgb(29, 196, 104)' }}>
+                            <span
+                                className="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer"
+                                style={{ backgroundColor: "rgb(29, 196, 104)" }}
+                                onClick={handleIncrease}
+                            >
                                 <svg
                                     stroke="currentColor"
                                     fill="none"
@@ -117,17 +155,26 @@ const JoinAlterYouthRevolution = () => {
                             </span>
                         </div>
                         <div className="flex items-end">
-                            <span className="w-fit text-[clamp(14px,_5vw,_22px)] leading-none font-bold">
-                                BDT 1,650
-                                <span className="text-[14px] leading-none">/month</span>
+                            <span className="text-xl leading-none font-bold select-none">
+                                BDT {scholarshipNumber * 1650}
+                                <span className="text-[14px] leading-none select-none">/month</span>
                             </span>
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="mt-3 w-full bg-green-500 text-white py-2 rounded-lg">
-                    Submit
+                <button
+                    type="submit"
+                    className="select-none mt-3 w-full bg-green-500 text-white py-4 rounded-lg font-bold"
+                >
+                    START NOW
                 </button>
             </form>
+            {/* Warning Alert */}
+            {showAlert && (
+                <div className="warning-alert select-none">
+                    <p>Scholarship limit reached for current scholarship session</p>
+                </div>
+            )}
         </div>
     );
 };
