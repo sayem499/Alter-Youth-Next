@@ -128,8 +128,8 @@ const JoinAlterYouthRevolution = () => {
                                 </svg>
                             </span>
                             <input
-                                className="w-10 h-10 bg-transparent border-none outline-none text-center font-semibold text-sm pl-3"
-                                type="number"
+                                className="w-10 h-10 bg-transparent border-none outline-none text-center font-semibold text-sm"
+                                type="text"
                                 readOnly
                                 value={scholarshipNumber}
                             />
