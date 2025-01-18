@@ -103,9 +103,9 @@ const JoinAlterYouthRevolution = () => {
                     </p>
                     <div className="mb-4 flex justify-between">
                         <div className="bg-gray-100 rounded-lg flex items-center justify-center">
+                            {console.log(scholarshipNumber)}
                             <span
-                                className="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer"
-                                style={{ backgroundColor: "rgb(181, 181, 181)" }}
+                                className={`w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer ${scholarshipNumber > 1 ? 'bg-[#1dc468]' : 'bg-[#b5b5b5]'}`}
                                 onClick={() => {
                                     const newNumber = Math.max(1, scholarshipNumber - 1);
                                     setScholarshipNumber(newNumber);
@@ -134,8 +134,7 @@ const JoinAlterYouthRevolution = () => {
                                 value={scholarshipNumber}
                             />
                             <span
-                                className="w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer"
-                                style={{ backgroundColor: "rgb(29, 196, 104)" }}
+                                className={`w-10 h-10 rounded-lg flex items-center justify-center cursor-pointer ${scholarshipNumber < 3  ? 'bg-[#1dc468]' : 'bg-[#b5b5b5]'}`}
                                 onClick={handleIncrease}
                             >
                                 <svg

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import SvgAlteryouthLogo from './LogoAy1';
 import HamburgerMenu from './HamburgerMenu';
 import SidebarMenu from './SidebarMenu';
@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
     };
@@ -57,7 +57,7 @@ const Navbar = () => {
           ) : (
               <HamburgerMenu toggleMenu={toggleSidebar} isSidebarOpen={isSidebarOpen}/>
           )}
-          <a href="/" className={`flex items-center ${isLargeScreen ? '' : 'mx-auto'}`} alt="AlterYouth">
+          <a href="/" className={`flex items-center ${isLargeScreen ? 'pl-3' : 'mx-auto'}`} alt="AlterYouth">
             <SvgAlteryouthLogo
               color={`${isLargeScreen ? (scrolled ? '#1dc468' : '#ffff') : '#1dc468'}`}
               style={{ width: '12rem', height: '4rem' }}
