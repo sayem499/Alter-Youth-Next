@@ -1,16 +1,11 @@
 import { useState } from 'react';
 
-const HamburgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+const HamburgerMenu = ({toggleMenu, isSidebarOpen}) => {
 
   return (
     <div
       className="hamburger-react"
-      aria-expanded={isOpen}
+      aria-expanded={isSidebarOpen}
       role="button"
       style={{
         cursor: 'pointer',
@@ -20,6 +15,7 @@ const HamburgerMenu = () => {
         userSelect: 'none',
         width: '48px',
         outline: 'none',
+        zIndex: 100
       }}
       tabIndex={0}
       onClick={toggleMenu}
@@ -33,7 +29,7 @@ const HamburgerMenu = () => {
           width: '20px',
           top: '17px',
           transition: '0.4s cubic-bezier(0, 0, 0, 1)',
-          transform: isOpen ? 'rotate(45deg) translate(4.23px, 4.23px)' : 'none',
+          transform: isSidebarOpen ? 'rotate(45deg) translate(4.23px, 4.23px)' : 'none',
         }}
       ></div>
       <div
@@ -45,7 +41,7 @@ const HamburgerMenu = () => {
           width: '20px',
           top: '23px',
           transition: '0.2s cubic-bezier(0, 0, 0, 1)',
-          transform: isOpen ? 'scaleX(0)' : 'none',
+          transform: isSidebarOpen ? 'scaleX(0)' : 'none',
         }}
       ></div>
       <div
@@ -57,7 +53,7 @@ const HamburgerMenu = () => {
           width: '20px',
           top: '29px',
           transition: '0.4s cubic-bezier(0, 0, 0, 1)',
-          transform: isOpen ? 'rotate(-45deg) translate(4.23px, -4.23px)' : 'none',
+          transform: isSidebarOpen ? 'rotate(-45deg) translate(4.23px, -4.23px)' : 'none',
         }}
       ></div>
     </div>

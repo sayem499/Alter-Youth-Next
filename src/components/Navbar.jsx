@@ -34,11 +34,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${scrolled ? 'bg-white shadow-lg ' : 'bg-transparent'
+      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${isLargeScreen ? (scrolled ? 'bg-white shadow-lg ' : 'bg-transparent') : 'bg-white shadow-lg'
         }`}
     >
       <div className="container mx-auto max-w-screen-xl flex justify-between items-center px-3">
-        <div className="flex items-center gap-2">
+        <div className={`flex items-center ${isLargeScreen ? '' : 'w-full justify-between'}`}>
           {isLargeScreen ? (
             <svg
               stroke="currentColor"
@@ -55,15 +55,16 @@ const Navbar = () => {
               <path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"></path>
             </svg>
           ) : (
-            <button onClick={toggleSidebar} aria-label="Open Sidebar">
-              <HamburgerMenu />
-            </button>
+              <HamburgerMenu toggleMenu={toggleSidebar} isSidebarOpen={isSidebarOpen}/>
           )}
-          <a href='/' className='flex items-center' alt='AlterYouth'>
-            <SvgAlteryouthLogo color={`${scrolled ? '#1dc468' : '#ffff'}`} style={{ width: '12em', height: '4em' }} />
+          <a href="/" className={`flex items-center ${isLargeScreen ? '' : 'mx-auto'}`} alt="AlterYouth">
+            <SvgAlteryouthLogo
+              color={`${isLargeScreen ? (scrolled ? '#1dc468' : '#ffff') : '#1dc468'}`}
+              style={{ width: '12rem', height: '4rem' }}
+            />
           </a>
         </div>
-        <ul className={`flex space-x-2 gap-4 ${scrolled ? 'text-[#1dc468]' : 'text-[#ffff]'}`}>
+        {isLargeScreen && <ul className={`flex space-x-2 gap-4 ${scrolled ? 'text-[#1dc468]' : 'text-[#ffff]'}`}>
           {['About', 'How It Works', 'Scholarships', 'Collaborate', 'Login'].map((link) => (
             <li key={link} className="relative font-bold text-sm">
               <a
@@ -77,7 +78,7 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-        </ul>
+        </ul>}
       </div>
       <style jsx>{`
         a:hover span {
@@ -85,7 +86,7 @@ const Navbar = () => {
         }
       `}</style>
 
-      { <SidebarMenu isSidebarOpen={isSidebarOpen} toggleMenu={toggleSidebar} />} {/* Render SidebarMenu conditionally */}
+      {<SidebarMenu isSidebarOpen={isSidebarOpen} toggleMenu={toggleSidebar} />} {/* Render SidebarMenu conditionally */}
     </nav>
   );
 };
