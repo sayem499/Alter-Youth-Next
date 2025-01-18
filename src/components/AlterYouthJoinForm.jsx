@@ -47,13 +47,13 @@ const JoinAlterYouthRevolution = () => {
     };
 
     return (
-        <div className="w-[350px] bg-white p-3 shadow-lg rounded-lg">
+        <div className="w-[350px] bg-white p-4 shadow-lg rounded-lg">
             <form className="bg-white" onSubmit={handleSubmit}>
                 <h6 className="mb-3 text-[1.3rem]">
                     <strong>Join the</strong>
                     <strong className="text-[#1dc468]"> #alteryouthrevolution</strong>
                 </h6>
-                <div className="mb-3" style={{ gap: "12px" }}>
+                <div className="mb-4" style={{ gap: "12px" }}>
                     <input
                         name="name"
                         className="mb-4 h-[50px] border border-gray-300 focus:border-[#1dc468] focus:outline-none px-[1rem] w-full rounded-[12px]"
@@ -170,10 +170,17 @@ const JoinAlterYouthRevolution = () => {
                     START NOW
                 </button>
             </form>
-            {/* Warning Alert */}
+
             {showAlert && (
-                <div className="warning-alert select-none">
-                    <p>Scholarship limit reached for current scholarship session</p>
+                <div className="warning-alert select-none rounded-md max-w-80 font-semibold flex items-center">
+                    
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-orange-500">
+                            <path d="M12 2L1 21h22L12 2zm0 16a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0-8a1 1 0 01-1-1V7a1 1 0 112 0v3a1 1 0 01-1 1z" fill="orange" />
+                            {/* Exclamation mark part */}
+                            <circle cx="12" cy="15" r="1.5" fill="black" />
+                            <rect x="11.5" y="6" width="1" height="6" fill="black" />
+                        </svg>
+                        <p> Scholarship limit reached for current scholarship session</p>
                 </div>
             )}
         </div>

@@ -67,7 +67,7 @@ const Navbar = () => {
           {['About', 'How It Works', 'Scholarships', 'Collaborate', 'Login'].map((link) => (
             <li key={link} className="relative font-bold text-sm">
               <a
-                href={`#${link.toLowerCase().replace(/ /g, '-')}`}
+                href={`${link.toLowerCase().replace(/ /g, '-')}`}
                 className="relative pb-1"
               >
                 {link}
