@@ -86,7 +86,8 @@ const JoinAlterYouthRevolution = () => {
                                 borderTopLeftRadius: '12px',
                                 borderBottomLeftRadius: '12px',
                                 borderRight: 'none',
-                                background: '#ffff'
+                                background: '#ffff',
+                                paddingLeft: '10px'
                             }
                         }
                         containerClass="phone-input-container"

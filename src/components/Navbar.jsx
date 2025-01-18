@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import SvgAlteryouthLogo from './LogoAy1';
 import HamburgerMenu from './HamburgerMenu';
+import SidebarMenu from './SidebarMenu';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +28,14 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
-        scrolled ? 'bg-white shadow-lg ' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${scrolled ? 'bg-white shadow-lg ' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto max-w-screen-xl flex justify-between items-center px-3">
         <div className="flex items-center gap-2">
@@ -45,11 +50,14 @@ const Navbar = () => {
               height="20"
               width="20"
               xmlns="http://www.w3.org/2000/svg"
+              onClick={toggleSidebar}
             >
               <path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"></path>
             </svg>
           ) : (
-            <HamburgerMenu />
+            <button onClick={toggleSidebar} aria-label="Open Sidebar">
+              <HamburgerMenu />
+            </button>
           )}
           <a href='/' className='flex items-center' alt='AlterYouth'>
             <SvgAlteryouthLogo color={`${scrolled ? '#1dc468' : '#ffff'}`} style={{ width: '12em', height: '4em' }} />
@@ -76,6 +84,8 @@ const Navbar = () => {
           width: 100%;
         }
       `}</style>
+
+      { <SidebarMenu isSidebarOpen={isSidebarOpen} toggleMenu={toggleSidebar} />} {/* Render SidebarMenu conditionally */}
     </nav>
   );
 };

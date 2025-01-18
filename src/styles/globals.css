@@ -27,6 +27,11 @@ body {
 
 .phone-input-container:focus-within .phone-button {
   border-color: #1dc468;
+  outline: none;
+}
+
+.phone-button:hover {
+  background: inherit !important;
 }
 
 .warning-alert {
