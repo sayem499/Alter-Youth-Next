@@ -7,7 +7,7 @@ const AlterYouthHero = () => {
       <div className="container mx-auto px-4 h-full">
         <div className="flex flex-col items-center h-full mt-2">
           <h1 className="text-center text-3xl lg:text-3xl font-bold mt-4">The Uber for Scholarships</h1>
-          <p className="text-center text-base mt-4">
+          <p className="text-center text-base mt-3">
             A platform connecting the world with financially struggling students<br />
             in Government Primary Schools of Bangladesh
           </p>
@@ -37,12 +37,12 @@ const AlterYouthHero = () => {
               />
             </a>
           </div>
-          <div className="flex flex-col w-full lg:flex-row items-center justify-evenly mt-16">{/* gap-6 lg:gap-16 */}
+          <div className="flex flex-col w-full lg:flex-row items-center justify-evenly mt-12">{/* gap-6 lg:gap-16 */}
             <div className="flex flex-col justify-center text-center">
               <Image
                 src="/images/app_scholarship.jpg"
                 alt="Monthly scholarship transfer details in the AlterYouth app"
-                width={180}
+                width={170}
                 height={200}
                 className='mx-auto'
               />
@@ -56,7 +56,7 @@ const AlterYouthHero = () => {
               <Image
                 src="/images/app_school.png"
                 alt="School report updates in the AlterYouth app"
-                width={180}
+                width={170}
                 height={200}
                 className='mx-auto'
               />
@@ -70,7 +70,7 @@ const AlterYouthHero = () => {
               <Image
                 src="/images/app_graduation.png"
                 alt="School report updates in the AlterYouth app"
-                width={180}
+                width={170}
                 height={200}
                 className='mx-auto'
               />

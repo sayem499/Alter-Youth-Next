@@ -20,7 +20,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full h-[300vh]">
         <Navbar />
         <div
-          className="bg-cover bg-center w-full h-[120vh] "
+          className="bg-cover bg-center w-full h-[85vh] "
           style={{
             backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, hsla(0, 0%, 100%, 0) 25%, hsla(0, 0%, 100%, 0)), url("hero_pc.jpg")`,
           }}
@@ -41,7 +41,7 @@ export default function Home() {
             <JoinAlterYouthRevolution />
           </div>
         </div>
-        <div className="h-full flex w-full justify-center items-center px-24 bg-gradient-to-t from-gray-100 via-transparent to-transparent">
+        <div className="h-screen flex w-full justify-center items-center px-24 bg-gradient-to-t from-gray-100 via-transparent to-transparent">
           <AlterYouthHero/>
         </div>
       </main>
